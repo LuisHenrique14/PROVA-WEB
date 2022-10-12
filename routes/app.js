@@ -7,17 +7,18 @@ router.get('/', function (req, res, next) {
 
 var Usuario = require('../models/usuario');
 
-router.get('/cadastro', function(req, res, next){
-    res.render('cadastro');
+router.get('/home-mongodb-mongoose-usuario', function(req, res, next){
+    res.render('home');
 });
 
-router.post('/cadastro', function(req, res, next){
+router.post('/home-mongodb-mongoose-usuario', function(req, res, next){
     var emailVar = req.body.emailBody;
     var firstNameVar = req.body.firstNameBody;
     var lastNameVar = req.body.lastNameBody;
     var dataNascimentoVar = req.body.dataNascimentoBody;
     var telefoneVar = req.body.telefoneBody;
     var passwordVar = req.body.passwordBody;
+    var idNumberVar = req.body.idNumberBody;
     var usuarioObject = new Usuario({
         firstName: firstNameVar,
         lastName: lastNameVar,
@@ -25,7 +26,7 @@ router.post('/cadastro', function(req, res, next){
         telefone: telefoneVar,
         email: emailVar,
         password: passwordVar,
-        idNumber: 2
+        idNumber: idNumberVar
     });
     usuarioObject.save();
 
