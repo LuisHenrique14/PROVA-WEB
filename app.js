@@ -5,12 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+const handlebars = require('express-handlebars');
 
 var appRoutes = require('./routes/app');
 var app = express();
 mongoose.connect('mongodb://localhost:27017/prova-web');
 
-// view engine setup
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

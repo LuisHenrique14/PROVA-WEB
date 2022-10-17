@@ -6,12 +6,13 @@ router.get('/', function (req, res, next) {
 });
 
 var Usuario = require('../models/usuario');
+var Curso = require('../models/curso');
 
-router.get('/home-mongodb-mongoose-usuario', function(req, res, next){
+router.get('/cadastro', function(req, res, next){
     res.render('home');
 });
 
-router.post('/home-mongodb-mongoose-usuario', function(req, res, next){
+router.post('/cadastro', function(req, res, next){
     var emailVar = req.body.emailBody;
     var firstNameVar = req.body.firstNameBody;
     var lastNameVar = req.body.lastNameBody;
@@ -31,7 +32,22 @@ router.post('/home-mongodb-mongoose-usuario', function(req, res, next){
     usuarioObject.save();
 
 
-    res.redirect('/home-mongodb-mongoose-usuario');
+    res.redirect('/');
+});
+
+router.post('/cadastroD', function(req, res, next){
+    var nameVar = req.body.disciplinaBody;
+    var professorVar = req.body.professorBody;
+    var cargaHorariaVar = red.body.cargaHorariaBody;
+    var cursoObject = new Curso({
+        name: nameVar,
+        professor: professorVar,
+        cargaHoraria: cargaHorariaVar
+    });
+    cursoObject.save();
+
+
+    res.redirect('/');
 });
 
 module.exports = router;
